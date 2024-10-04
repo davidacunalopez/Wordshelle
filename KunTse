@@ -1,0 +1,61 @@
+seleccionar_palabra() {
+  palabra=$(shuf -n 1 BD.txt)
+  echo $palabra > wordle.txt
+}
+iniciar_partida() {
+  seleccionar_palabra
+  echo "0" >> wordle.txt  # Número de intentos
+  echo "El Wordle se ha reseteado." 
+}
+verificar_intento() {
+  intento=$1
+  palabra_correcta=$(head -n 1 wordle.txt)
+  tam_maximo=$((${#palabra_correcta} > ${#intento} ? ${#palabra_correcta} : ${#intento}))
+
+  # Almacenar el intento en wordle.txt
+  echo $intento >> wordle.txt
+
+  # Mostrar resultado del intento
+  for (( i=0; i<$tam_maximo; i++ )); do
+    letra_intento=${intento:$i:1}
+    letra_palabra=${palabra_correcta:$i:1}
+
+    if [[ $letra_intento == $letra_palabra ]]; then
+      # Letra correcta en posición correcta
+      echo -n "╔═══╗$letra_intento║"
+    elif [[ $palabra_correcta == *"$letra_intento"* ]]; then
+      # Letra correcta en posición incorrecta
+      echo -n "┌───┐$letra_intento│"
+    else
+      # Letra incorrecta
+      echo -n "$letra_intento"
+    fi
+  done
+  echo ""
+}
+main() {
+  case $1 in
+    -H)
+      echo "Uso: KunTse [-R] [-G palabra]"
+      echo "-R: Reiniciar el juego"
+      echo "-G: Intentar adivinar una palabra"
+      ;;
+    -R)
+      iniciar_partida
+      ;;
+    -G)
+      if [[ -z $2 ]]; then
+        echo "Debe proporcionar una palabra"
+        exit 1
+      fi
+      verificar_intento $2
+      ;;
+    *)
+      echo "Opción no válida. Use -H para ayuda."
+      ;;
+  esac
+}
+
+main "$@"
+
+
