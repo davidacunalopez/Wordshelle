@@ -22,10 +22,10 @@ pinguino
 tortuga
 cangrejo
 langosta
-tiburón
+tiburon
 pulpo
 calamar
-estrella de mar
+caracol
 medusa
 foca
 morsa
@@ -37,10 +37,10 @@ murcielago
 mapache
 zarigueya
 armadillo
-puercoespín
+puercoespin
 castor
 conejo
-hámster
+hamster
 huron
 lemur
 chimpance
