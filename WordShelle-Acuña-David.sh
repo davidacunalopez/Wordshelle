@@ -14,24 +14,28 @@
 # -> OPCIONES DE EJECUCION <-
 # OPCION 1 (SIN complicaciones):
 # Abre el shell y navega hasta la carpeta donde se encuentra el script y BD.txt
-# Para ejecutar el script se debe hacer uso del comando ->
-#         ./KunTse.sh [opción] [palabra en caso de -G]
+# da permisos de ejecucion al script con el comando ->
+#         chmod +x WordShelle-Acuña-David.sh
+# Luego para ejecutar el script se debe hacer uso del comando ->
+#         ./WordShelle-Acuña-David.sh [opción] [palabra en caso de -G]
 
 # Ejemplo:
-#         ./KunTse.sh -H
-#         ./KunTse.sh -R
-#         ./KunTse.sh -G perro
+#         ./WordShelle-Acuña-David.sh -H
+#         ./WordShelle-Acuña-David.sh -R
+#         ./WordShelle-Acuña-David.sh -G perro
 
 # OPCION 2:
 # Mueve el script y BD.txt a una carpeta que ya esté en tu PATH
 # puede ver tu PATH con el comando echo $PATH y mover los archivos ahí
+# A continuación, da permisos de ejecución al script con el comando ->
+#         chmod +x WordShelle-Acuña-David.sh
 # Luego, puedes ejecutar el script desde cualquier lugar con el comando ->
-#         KunTse.sh [opción] [palabra en caso de -G]
+#         WordShelle-Acuña-David.sh [opción] [palabra en caso de -G]
 
 # Ejemplo:
-#         KunTse.sh -H
-#         KunTse.sh -R
-#         KunTse.sh -G perro
+#         WordShelle-Acuña-David.sh -H
+#         WordShelle-Acuña-David.sh -R
+#         WordShelle-Acuña-David.sh -G perro
 
 
 # -------------------------------ANALISIS DE RESULTADOS-------------------------------------
@@ -155,7 +159,7 @@ verificar_intento() {
 # -H: Muestra la ayuda
 # -R: Reinicia el juego
 # -G: Intenta adivinar una palabra
-# En la consola, se debe ejecutar el script con ./KunTse.sh [opción] [palabra en caso de -G]
+# En la consola, se debe ejecutar el script con ./WordShelle-Acuña-David.sh [opción] [palabra en caso de -G]
 main() {
     case $1 in
         -H)
