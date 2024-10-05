@@ -2,13 +2,18 @@ seleccionar_palabra() {
   palabra=$(shuf -n 1 BD.txt)
   echo $palabra > wordle.txt
 }
+
+
 iniciar_partida() {
   seleccionar_palabra
-  echo "0" >> wordle.txt  # Número de intentos
+  echo "5" >> wordle.txt  # Número de intentos
   echo "El Wordle se ha reseteado." 
 }
+
+
 verificar_intento() {
   intento=$1
+  echo "Intento: $intento"
   palabra_correcta=$(head -n 1 wordle.txt)
   tam_maximo=$((${#palabra_correcta} > ${#intento} ? ${#palabra_correcta} : ${#intento}))
 
@@ -33,6 +38,7 @@ verificar_intento() {
   done
   echo ""
 }
+
 main() {
   case $1 in
     -H)
@@ -44,14 +50,14 @@ main() {
       iniciar_partida
       ;;
     -G)
-      if [[ -z $2 ]]; then
+      if [[ -z $2 ]]; then # El -z verifica si ingresamos una palabra
         echo "Debe proporcionar una palabra"
         exit 1
       fi
       verificar_intento $2
       ;;
     *)
-      echo "Opción no válida. Use -H para ayuda."
+      echo "Opción no valida. Use -H para ayuda"
       ;;
   esac
 }
